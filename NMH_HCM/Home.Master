@@ -164,6 +164,13 @@
                             <ul class="treeview-menu">
                                 <li><a href="/UserReports/Provider_Claims_Details_RX.aspx">Raw Data</a></li> 
                                 <li><a href="/UserReports/Provider_Claims_Details_2.aspx">Adjudicated</a></li>
+                                <li><a href="/ClaimsDashboard/ClaimsReceived1.aspx">Dashboard 1</a></li>
+                                <li><a href="/ClaimsDashboard/ClaimsAdviceByDateReceived.aspx">Claims Advice</a></li>
+                                <li><a href="/ClaimsDashboard/ClaimsAdviceByDateReceived_MyHealth.aspx">Claims Advice-MYHEALTH</a></li>
+                                <li><a href="/ClaimsDashboard/RefundDashboard1.aspx">Refunds Dashboard</a></li>
+                                <li><a href="/ClaimsDashboard/RefundsAdviceByDateReceived.aspx">Refunds Advice</a></li>
+                                <li><a href="/ClaimsDashboard/ClaimsEnteredByUser.aspx">Claims Entered By User</a></li>
+                                <li><a href="/ClaimsDashboard/ClaimsVettedByUser.aspx">Claims Vetted By User</a></li>
                             </ul>
                         </li>
                         <li  class="treeview"><a href="#"> <span>Claimed Unequal Approved</span> <i class="fa fa-angle-left pull-right"></i></a>             

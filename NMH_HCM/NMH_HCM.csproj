@@ -649,6 +649,13 @@
     <Content Include="aspnet_client\system_web\4_0_30319\crystalreportviewers13\urlreporting\activexviewer.js" />
     <Content Include="aspnet_client\system_web\4_0_30319\crystalreportviewers13\urlreporting\appletviewer.js" />
     <Content Include="BarcodesReport.aspx" />
+    <Content Include="ClaimsDashboard\ClaimsAdviceByDateReceived.aspx" />
+    <Content Include="ClaimsDashboard\ClaimsAdviceByDateReceived_MyHealth.aspx" />
+    <Content Include="ClaimsDashboard\ClaimsEnteredByUser.aspx" />
+    <Content Include="ClaimsDashboard\ClaimsReceived1.aspx" />
+    <Content Include="ClaimsDashboard\ClaimsVettedByUser.aspx" />
+    <Content Include="ClaimsDashboard\RefundDashboard1.aspx" />
+    <Content Include="ClaimsDashboard\RefundsAdviceByDateReceived.aspx" />
     <Content Include="Dashboard.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MYHEALTH\Dashboard.aspx" />
@@ -818,6 +825,55 @@
     </Compile>
     <Compile Include="BarcodesReport.aspx.designer.cs">
       <DependentUpon>BarcodesReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimsDashboard\ClaimsAdviceByDateReceived.aspx.cs">
+      <DependentUpon>ClaimsAdviceByDateReceived.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClaimsDashboard\ClaimsAdviceByDateReceived.aspx.designer.cs">
+      <DependentUpon>ClaimsAdviceByDateReceived.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimsDashboard\ClaimsAdviceByDateReceived_MyHealth.aspx.cs">
+      <DependentUpon>ClaimsAdviceByDateReceived_MyHealth.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClaimsDashboard\ClaimsAdviceByDateReceived_MyHealth.aspx.designer.cs">
+      <DependentUpon>ClaimsAdviceByDateReceived_MyHealth.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimsDashboard\ClaimsEnteredByUser.aspx.cs">
+      <DependentUpon>ClaimsEnteredByUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClaimsDashboard\ClaimsEnteredByUser.aspx.designer.cs">
+      <DependentUpon>ClaimsEnteredByUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimsDashboard\ClaimsReceived1.aspx.cs">
+      <DependentUpon>ClaimsReceived1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClaimsDashboard\ClaimsReceived1.aspx.designer.cs">
+      <DependentUpon>ClaimsReceived1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimsDashboard\ClaimsVettedByUser.aspx.cs">
+      <DependentUpon>ClaimsVettedByUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClaimsDashboard\ClaimsVettedByUser.aspx.designer.cs">
+      <DependentUpon>ClaimsVettedByUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimsDashboard\RefundDashboard1.aspx.cs">
+      <DependentUpon>RefundDashboard1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClaimsDashboard\RefundDashboard1.aspx.designer.cs">
+      <DependentUpon>RefundDashboard1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimsDashboard\RefundsAdviceByDateReceived.aspx.cs">
+      <DependentUpon>RefundsAdviceByDateReceived.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClaimsDashboard\RefundsAdviceByDateReceived.aspx.designer.cs">
+      <DependentUpon>RefundsAdviceByDateReceived.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
