@@ -207,6 +207,8 @@
                     <ul class="treeview-menu">
                           <li><a href="/StatsDashboard/ClaimsAttendance.aspx"><span>Claims Attendance & Amount</span></a></li>
                         <li><a href="/StatsDashboard/ClaimsAttendance_ServiceType.aspx"><span>Claims Attendance & Amount<br /> By ServiceType</span></a></li>
+                        <li><a href="/StatsDashboard/ClaimsAttendance_BusinessNature.aspx"><span>Claims Attendance & Amount<br /> By Business Nature</span></a></li>
+                        <li><a href="/StatsDashboard/ClaimsAttendance_ItemService.aspx"><span>Claims Attendance & Amount<br /> By Item Service</span></a></li>
                     </ul>
             </li>
 

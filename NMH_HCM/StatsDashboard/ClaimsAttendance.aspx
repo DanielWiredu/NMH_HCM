@@ -330,7 +330,7 @@
                                 </Columns>
                             </MasterTableView>
                         </telerik:RadGrid>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AgeBand, Essential, Executive, Premier, PremierPlus FROM dbo.vAgeBandBenefitClaims(@startdate, @enddate, 'Male', DEFAULT) AS vAgeBandBenefitClaims_1" OnSelecting="SqlDataSource1_Selecting">
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AgeBand, Essential, Executive, Premier, PremierPlus FROM dbo.vAgeBandBenefitClaims(@startdate, @enddate, 'Male', DEFAULT, DEFAULT) AS vAgeBandBenefitClaims_1" OnSelecting="SqlDataSource1_Selecting">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
@@ -359,7 +359,7 @@
                                 </Columns>
                             </MasterTableView>
                         </telerik:RadGrid>
-                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AgeBand, Essential, Executive, Premier, PremierPlus FROM dbo.vAgeBandBenefitClaimsAmount(@startdate, @enddate, 'Male', DEFAULT) AS vAgeBandBenefitClaimsAmount_1" OnSelecting="SqlDataSource2_Selecting">
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AgeBand, Essential, Executive, Premier, PremierPlus FROM dbo.vAgeBandBenefitClaimsAmount(@startdate, @enddate, 'Male', DEFAULT, DEFAULT) AS vAgeBandBenefitClaimsAmount_1" OnSelecting="SqlDataSource2_Selecting">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
@@ -392,7 +392,7 @@
                                 </Columns>
                             </MasterTableView>
                         </telerik:RadGrid>
-                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AgeBand, Essential, Executive, Premier, PremierPlus FROM dbo.vAgeBandBenefitClaims(@startdate, @enddate, 'Female', DEFAULT) AS vAgeBandBenefitClaims_1" OnSelecting="SqlDataSource3_Selecting">
+                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AgeBand, Essential, Executive, Premier, PremierPlus FROM dbo.vAgeBandBenefitClaims(@startdate, @enddate, 'Female', DEFAULT, DEFAULT) AS vAgeBandBenefitClaims_1" OnSelecting="SqlDataSource3_Selecting">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
@@ -421,7 +421,7 @@
                                 </Columns>
                             </MasterTableView>
                         </telerik:RadGrid>
-                        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AgeBand, Essential, Executive, Premier, PremierPlus FROM dbo.vAgeBandBenefitClaimsAmount(@startdate, @enddate, 'Female', DEFAULT) AS vAgeBandBenefitClaimsAmount_1" OnSelecting="SqlDataSource4_Selecting">
+                        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AgeBand, Essential, Executive, Premier, PremierPlus FROM dbo.vAgeBandBenefitClaimsAmount(@startdate, @enddate, 'Female', DEFAULT, DEFAULT) AS vAgeBandBenefitClaimsAmount_1" OnSelecting="SqlDataSource4_Selecting">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
@@ -475,7 +475,7 @@
                 </Appearance>
             </ChartTitle>
         </telerik:RadHtmlChart>
-                <asp:SqlDataSource ID="chartSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT BENEFITOPTION, MALES, FEMALES FROM dbo.vBenefitGenderClaims(@startdate, @enddate, DEFAULT) AS vBenefitGenderClaims_1" OnSelecting="chartSource_Selecting">
+                <asp:SqlDataSource ID="chartSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT BENEFITOPTION, MALES, FEMALES FROM dbo.vBenefitGenderClaims(@startdate, @enddate, DEFAULT, DEFAULT) AS vBenefitGenderClaims_1" OnSelecting="chartSource_Selecting">
                     <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
@@ -526,7 +526,7 @@
                 </Appearance>
             </ChartTitle>
         </telerik:RadHtmlChart>
-                <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT BENEFITOPTION, MALES, FEMALES FROM dbo.vBenefitGenderClaimsAmount(@startdate, @enddate, DEFAULT) AS vBenefitGenderClaimsAmount_1" OnSelecting="SqlDataSource5_Selecting">
+                <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT BENEFITOPTION, MALES, FEMALES FROM dbo.vBenefitGenderClaimsAmount(@startdate, @enddate, DEFAULT, DEFAULT) AS vBenefitGenderClaimsAmount_1" OnSelecting="SqlDataSource5_Selecting">
                     <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
@@ -672,7 +672,7 @@
                 </Appearance>
             </ChartTitle>
         </telerik:RadHtmlChart>
-                <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AGEBAND, MALES, FEMALES FROM dbo.vAgeBandGenderClaims(@startdate, @enddate, DEFAULT) AS vAgeBandGenderClaims_1" OnSelecting="SqlDataSource8_Selecting">
+                <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AGEBAND, MALES, FEMALES FROM dbo.vAgeBandGenderClaims(@startdate, @enddate, DEFAULT, DEFAULT) AS vAgeBandGenderClaims_1" OnSelecting="SqlDataSource8_Selecting">
                     <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
@@ -724,7 +724,7 @@
                 </Appearance>
             </ChartTitle>
         </telerik:RadHtmlChart>
-                <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AGEBAND, MALES, FEMALES FROM dbo.vAgeBandGenderClaimAmount(@startdate, @enddate, DEFAULT) AS vAgeBandGenderClaimAmount_1" OnSelecting="SqlDataSource9_Selecting">
+                <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AGEBAND, MALES, FEMALES FROM dbo.vAgeBandGenderClaimAmount(@startdate, @enddate, DEFAULT, DEFAULT) AS vAgeBandGenderClaimAmount_1" OnSelecting="SqlDataSource9_Selecting">
                     <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
@@ -755,7 +755,7 @@
                                     </PlotArea>
                                 </telerik:RadHtmlChart>
              
-                <asp:SqlDataSource ID="SqlDataSource10" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AGEBAND, TOTALCLAIMS FROM dbo.vAgeBandAllClaims(@startdate, @enddate, DEFAULT) AS vAgeBandAllClaims_1" OnSelecting="SqlDataSource10_Selecting">
+                <asp:SqlDataSource ID="SqlDataSource10" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AGEBAND, TOTALCLAIMS FROM dbo.vAgeBandAllClaims(@startdate, @enddate, DEFAULT, DEFAULT) AS vAgeBandAllClaims_1" OnSelecting="SqlDataSource10_Selecting">
                     <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
@@ -783,7 +783,7 @@
                                     </PlotArea>
                                 </telerik:RadHtmlChart>
              
-                <asp:SqlDataSource ID="SqlDataSource11" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AGEBAND, TOTALCLAIMAMOUNT FROM dbo.vAgeBandAllClaimAmount(@startdate, @enddate, DEFAULT) AS vAgeBandAllClaimAmount_1" OnSelecting="SqlDataSource11_Selecting">
+                <asp:SqlDataSource ID="SqlDataSource11" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AGEBAND, TOTALCLAIMAMOUNT FROM dbo.vAgeBandAllClaimAmount(@startdate, @enddate, DEFAULT, DEFAULT) AS vAgeBandAllClaimAmount_1" OnSelecting="SqlDataSource11_Selecting">
                     <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />

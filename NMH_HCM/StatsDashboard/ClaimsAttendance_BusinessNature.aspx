@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="ClaimsAttendance_ServiceType.aspx.cs" Inherits="NMH_HCM.StatsDashboard.ClaimsAttendance_ServiceType" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="ClaimsAttendance_BusinessNature.aspx.cs" Inherits="NMH_HCM.StatsDashboard.ClaimsAttendance_BusinessNature" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="box box-default">
             <div class="box-header with-border">
-              <h3 class="box-title">Dashboard (Today's Summary) </h3>
+              <h3 class="box-title">Dashboard (Today's Summary) - By Business Nature </h3>
               <%--<div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
@@ -27,10 +27,10 @@
                                      <asp:RequiredFieldValidator runat="server" ControlToValidate="dpEndDate" Display="Dynamic" ErrorMessage="Required Field" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </div>
                                      <div class="col-md-3">
-                                         <label>Service Type</label>
-                                         <telerik:RadDropDownList ID="dlServiceType" runat="server" Width="100%" DataSourceID="serviceTypeSource" DataTextField="ServiceType" DataValueField="ID" DefaultMessage="Select Service Type"></telerik:RadDropDownList>
-                                         <asp:SqlDataSource ID="serviceTypeSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [ID], [ServiceType] FROM [ServiceType]"></asp:SqlDataSource>
-                                         <asp:RequiredFieldValidator runat="server" ErrorMessage="Select Service Type" ControlToValidate="dlServiceType" Display="Dynamic" ForeColor="Red" SetFocusOnError="true"></asp:RequiredFieldValidator>
+                                         <label>Business Nature</label>
+                                         <telerik:RadDropDownList ID="dlBusinessNature" runat="server" Width="100%" DataSourceID="businessNatureSource" DataTextField="Business" DataValueField="ID" DefaultMessage="Select Business Nature" DropDownHeight="250px"></telerik:RadDropDownList>
+                                         <asp:SqlDataSource ID="businessNatureSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [ID], [Business] FROM [BusinessNature]"></asp:SqlDataSource>
+                                         <asp:RequiredFieldValidator runat="server" ErrorMessage="Select Business Nature" ControlToValidate="dlBusinessNature" Display="Dynamic" ForeColor="Red" SetFocusOnError="true"></asp:RequiredFieldValidator>
                                     </div>
                                      <div class="col-md-3">
                                          <label>Click</label>
@@ -272,13 +272,13 @@
                                 </Columns>
                             </MasterTableView>
                         </telerik:RadGrid>
-                        <asp:SqlDataSource ID="topClmSubmitSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="Select top(10) ServiceProvider,count(ID) as TotalClaims from vwStatsDashboard_ClaimsAttendance WHERE (DateofAttendance BETWEEN @StartDate AND @EndDate) and ServiceTypeID = @ServiceTypeId GROUP BY ServiceProvider ORDER BY TotalClaims DESC" OnSelecting="topClmSubmitSource_Selecting">
+                        <asp:SqlDataSource ID="topClmSubmitSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="Select top(10) ServiceProvider,count(ID) as TotalClaims from vwStatsDashboard_ClaimsAttendance WHERE (DateofAttendance BETWEEN @StartDate AND @EndDate) and BusinessNatureID = @BusinessNatureId GROUP BY ServiceProvider ORDER BY TotalClaims DESC" OnSelecting="topClmSubmitSource_Selecting">
                             <SelectParameters>
                                 <%--<asp:ControlParameter ControlID="grdTopClaimsSubmitted" DefaultValue=" " Name="StartDate" PropertyName="SelectedValue" />
                                 <asp:ControlParameter ControlID="grdTopClaimsSubmitted" DefaultValue=" " Name="EndDate" PropertyName="SelectedValue" />--%>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="StartDate" PropertyName="SelectedDate" Type="DateTime" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="EndDate" PropertyName="SelectedDate" Type="DateTime" />
-                                <asp:ControlParameter ControlID="dlServiceType" Name="ServiceTypeId" PropertyName="SelectedValue" Type="Int32" />
+                                <asp:ControlParameter ControlID="dlBusinessNature" Name="BusinessNatureId" PropertyName="SelectedValue" Type="Int32" /> 
                             </SelectParameters>
                         </asp:SqlDataSource>
                     </div>
@@ -297,13 +297,13 @@
                                 </Columns>
                             </MasterTableView>
                         </telerik:RadGrid>
-                        <asp:SqlDataSource ID="topClmAmountSubmitSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="select top(10) ServiceProvider,isnull(sum(SysAmountClaimed),0.0) as ClaimAmount from vwStatsDashboard_ClaimsAttendance WHERE (DateofAttendance BETWEEN  @StartDate AND @EndDate) and ServiceTypeID = @ServiceTypeId GROUP BY ServiceProvider ORDER BY ClaimAmount DESC" OnSelecting="topClmAmountSubmitSource_Selecting">
+                        <asp:SqlDataSource ID="topClmAmountSubmitSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="select top(10) ServiceProvider,isnull(sum(SysAmountClaimed),0.0) as ClaimAmount from vwStatsDashboard_ClaimsAttendance WHERE (DateofAttendance BETWEEN  @StartDate AND @EndDate) and BusinessNatureID = @BusinessNatureId GROUP BY ServiceProvider ORDER BY ClaimAmount DESC" OnSelecting="topClmAmountSubmitSource_Selecting">
                             <SelectParameters>
                                 <%--<asp:ControlParameter ControlID="grdTopClaimsSubmitted" DefaultValue=" " Name="StartDate" PropertyName="SelectedValue" />
                                 <asp:ControlParameter ControlID="grdTopClaimsSubmitted" DefaultValue=" " Name="EndDate" PropertyName="SelectedValue" />--%>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="StartDate" PropertyName="SelectedDate" Type="DateTime" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="EndDate" PropertyName="SelectedDate" Type="DateTime" />
-                                <asp:ControlParameter ControlID="dlServiceType" Name="ServiceTypeId" PropertyName="SelectedValue" Type="Int32" />
+                                <asp:ControlParameter ControlID="dlBusinessNature" Name="BusinessNatureId" PropertyName="SelectedValue" Type="Int32" />
                             </SelectParameters>
                         </asp:SqlDataSource>
                     </div>
@@ -332,11 +332,11 @@
                                 </Columns>
                             </MasterTableView>
                         </telerik:RadGrid>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AgeBand, Essential, Executive, Premier, PremierPlus FROM dbo.vAgeBandBenefitClaims(@startdate, @enddate, 'Male', @servicetypeid, DEFAULT) AS vAgeBandBenefitClaims_1" OnSelecting="SqlDataSource1_Selecting">
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AgeBand, Essential, Executive, Premier, PremierPlus FROM dbo.vAgeBandBenefitClaims(@startdate, @enddate, 'Male', DEFAULT, @businessnatureid) AS vAgeBandBenefitClaims_1" OnSelecting="SqlDataSource1_Selecting">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
-                                <asp:ControlParameter ControlID="dlServiceType" Name="servicetypeid" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="dlBusinessNature" Name="businessnatureid" PropertyName="SelectedValue" Type="String" />
                             </SelectParameters>
                         </asp:SqlDataSource>
                     </div>
@@ -362,11 +362,11 @@
                                 </Columns>
                             </MasterTableView>
                         </telerik:RadGrid>
-                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AgeBand, Essential, Executive, Premier, PremierPlus FROM dbo.vAgeBandBenefitClaimsAmount(@startdate, @enddate, 'Male', @servicetypeid, DEFAULT) AS vAgeBandBenefitClaimsAmount_1" OnSelecting="SqlDataSource2_Selecting">
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AgeBand, Essential, Executive, Premier, PremierPlus FROM dbo.vAgeBandBenefitClaimsAmount(@startdate, @enddate, 'Male', DEFAULT, @businessnatureid) AS vAgeBandBenefitClaimsAmount_1" OnSelecting="SqlDataSource2_Selecting">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
-                                <asp:ControlParameter ControlID="dlServiceType" Name="servicetypeid" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="dlBusinessNature" Name="businessnatureid" PropertyName="SelectedValue" Type="String" />
                             </SelectParameters>
                         </asp:SqlDataSource>
                     </div>
@@ -396,11 +396,11 @@
                                 </Columns>
                             </MasterTableView>
                         </telerik:RadGrid>
-                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AgeBand, Essential, Executive, Premier, PremierPlus FROM dbo.vAgeBandBenefitClaims(@startdate, @enddate, 'Female', @servicetypeid, DEFAULT) AS vAgeBandBenefitClaims_1" OnSelecting="SqlDataSource3_Selecting">
+                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AgeBand, Essential, Executive, Premier, PremierPlus FROM dbo.vAgeBandBenefitClaims(@startdate, @enddate, 'Female', DEFAULT, @businessnatureid) AS vAgeBandBenefitClaims_1" OnSelecting="SqlDataSource3_Selecting">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
-                                <asp:ControlParameter ControlID="dlServiceType" Name="servicetypeid" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="dlBusinessNature" Name="businessnatureid" PropertyName="SelectedValue" Type="String" />
                             </SelectParameters>
                         </asp:SqlDataSource>
                     </div>
@@ -426,11 +426,11 @@
                                 </Columns>
                             </MasterTableView>
                         </telerik:RadGrid>
-                        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AgeBand, Essential, Executive, Premier, PremierPlus FROM dbo.vAgeBandBenefitClaimsAmount(@startdate, @enddate, 'Female', @servicetypeid, DEFAULT) AS vAgeBandBenefitClaimsAmount_1" OnSelecting="SqlDataSource4_Selecting">
+                        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AgeBand, Essential, Executive, Premier, PremierPlus FROM dbo.vAgeBandBenefitClaimsAmount(@startdate, @enddate, 'Female', DEFAULT, @businessnatureid) AS vAgeBandBenefitClaimsAmount_1" OnSelecting="SqlDataSource4_Selecting">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
-                                <asp:ControlParameter ControlID="dlServiceType" Name="servicetypeid" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="dlBusinessNature" Name="businessnatureid" PropertyName="SelectedValue" Type="String" />
                             </SelectParameters>
                         </asp:SqlDataSource>
                     </div>
@@ -481,11 +481,11 @@
                 </Appearance>
             </ChartTitle>
         </telerik:RadHtmlChart>
-                <asp:SqlDataSource ID="chartSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT BENEFITOPTION, MALES, FEMALES FROM dbo.vBenefitGenderClaims(@startdate, @enddate, @servicetypeid, DEFAULT) AS vBenefitGenderClaims_1" OnSelecting="chartSource_Selecting">
+                <asp:SqlDataSource ID="chartSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT BENEFITOPTION, MALES, FEMALES FROM dbo.vBenefitGenderClaims(@startdate, @enddate, DEFAULT, @businessnatureid) AS vBenefitGenderClaims_1" OnSelecting="chartSource_Selecting">
                     <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
-                        <asp:ControlParameter ControlID="dlServiceType" Name="servicetypeid" PropertyName="SelectedValue" Type="String" />
+                        <asp:ControlParameter ControlID="dlBusinessNature" Name="businessnatureid" PropertyName="SelectedValue" Type="String" />
                             </SelectParameters>
                 </asp:SqlDataSource>
                     </div>
@@ -533,11 +533,11 @@
                 </Appearance>
             </ChartTitle>
         </telerik:RadHtmlChart>
-                <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT BENEFITOPTION, MALES, FEMALES FROM dbo.vBenefitGenderClaimsAmount(@startdate, @enddate, @servicetypeid, DEFAULT) AS vBenefitGenderClaimsAmount_1" OnSelecting="SqlDataSource5_Selecting">
+                <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT BENEFITOPTION, MALES, FEMALES FROM dbo.vBenefitGenderClaimsAmount(@startdate, @enddate, DEFAULT, @businessnatureid) AS vBenefitGenderClaimsAmount_1" OnSelecting="SqlDataSource5_Selecting">
                     <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
-                                <asp:ControlParameter ControlID="dlServiceType" Name="servicetypeid" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="dlBusinessNature" Name="businessnatureid" PropertyName="SelectedValue" Type="String" />
                             </SelectParameters>
                 </asp:SqlDataSource>
                     </div>
@@ -581,11 +581,11 @@
                 </Appearance>
             </ChartTitle>
         </telerik:RadHtmlChart>
-                <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT BENEFITOPTION, ISNULL(COUNT(ID),0) AS TOTALCLAIMS FROM dbo.vwStatsDashboard_ClaimsAttendance WHERE (DateofAttendance BETWEEN @startdate AND @enddate) AND ActualPlanID in (31,2,3,18) and ServiceTypeID = @servicetypeid GROUP BY BENEFITOPTION" OnSelecting="SqlDataSource6_Selecting">
+                <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT BENEFITOPTION, ISNULL(COUNT(ID),0) AS TOTALCLAIMS FROM dbo.vwStatsDashboard_ClaimsAttendance WHERE (DateofAttendance BETWEEN @startdate AND @enddate) AND ActualPlanID in (31,2,3,18) and BusinessNatureID = @businessnatureid GROUP BY BENEFITOPTION" OnSelecting="SqlDataSource6_Selecting">
                     <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
-                        <asp:ControlParameter ControlID="dlServiceType" Name="servicetypeid" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="dlBusinessNature" Name="businessnatureid" PropertyName="SelectedValue" Type="String" />
                             </SelectParameters>
                 </asp:SqlDataSource>
                     </div>
@@ -626,11 +626,11 @@
                 </Appearance>
             </ChartTitle>
         </telerik:RadHtmlChart>
-                <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT BENEFITOPTION, ISNULL(SUM(SysAmountClaimed),0.00) AS CLAIMAMOUNT FROM dbo.vwStatsDashboard_ClaimsAttendance WHERE (DateofAttendance BETWEEN @startdate AND @enddate) AND ActualPlanID in (31,2,3,18) and ServiceTypeID = @servicetypeid GROUP BY BENEFITOPTION" OnSelecting="SqlDataSource7_Selecting">
+                <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT BENEFITOPTION, ISNULL(SUM(SysAmountClaimed),0.00) AS CLAIMAMOUNT FROM dbo.vwStatsDashboard_ClaimsAttendance WHERE (DateofAttendance BETWEEN @startdate AND @enddate) AND ActualPlanID in (31,2,3,18) and BusinessNatureID = @businessnatureid GROUP BY BENEFITOPTION" OnSelecting="SqlDataSource7_Selecting">
                     <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
-                        <asp:ControlParameter ControlID="dlServiceType" Name="servicetypeid" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="dlBusinessNature" Name="businessnatureid" PropertyName="SelectedValue" Type="String" />
                             </SelectParameters>
                 </asp:SqlDataSource>
                     </div>
@@ -682,11 +682,11 @@
                 </Appearance>
             </ChartTitle>
         </telerik:RadHtmlChart>
-                <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AGEBAND, MALES, FEMALES FROM dbo.vAgeBandGenderClaims(@startdate, @enddate, @servicetypeid, DEFAULT) AS vAgeBandGenderClaims_1" OnSelecting="SqlDataSource8_Selecting">
+                <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AGEBAND, MALES, FEMALES FROM dbo.vAgeBandGenderClaims(@startdate, @enddate, DEFAULT, @businessnatureid) AS vAgeBandGenderClaims_1" OnSelecting="SqlDataSource8_Selecting">
                     <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
-                        <asp:ControlParameter ControlID="dlServiceType" Name="servicetypeid" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="dlBusinessNature" Name="businessnatureid" PropertyName="SelectedValue" Type="String" />
                             </SelectParameters>
                 </asp:SqlDataSource>
                     </div>
@@ -735,11 +735,11 @@
                 </Appearance>
             </ChartTitle>
         </telerik:RadHtmlChart>
-                <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AGEBAND, MALES, FEMALES FROM dbo.vAgeBandGenderClaimAmount(@startdate, @enddate, @servicetypeid, DEFAULT) AS vAgeBandGenderClaimAmount_1" OnSelecting="SqlDataSource9_Selecting">
+                <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AGEBAND, MALES, FEMALES FROM dbo.vAgeBandGenderClaimAmount(@startdate, @enddate, DEFAULT, @businessnatureid) AS vAgeBandGenderClaimAmount_1" OnSelecting="SqlDataSource9_Selecting">
                     <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
-                        <asp:ControlParameter ControlID="dlServiceType" Name="servicetypeid" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="dlBusinessNature" Name="businessnatureid" PropertyName="SelectedValue" Type="String" />
                             </SelectParameters>
                 </asp:SqlDataSource>
                     </div>
@@ -767,11 +767,11 @@
                                     </PlotArea>
                                 </telerik:RadHtmlChart>
              
-                <asp:SqlDataSource ID="SqlDataSource10" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AGEBAND, TOTALCLAIMS FROM dbo.vAgeBandAllClaims(@startdate, @enddate, @servicetypeid, DEFAULT) AS vAgeBandAllClaims_1" OnSelecting="SqlDataSource10_Selecting">
+                <asp:SqlDataSource ID="SqlDataSource10" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AGEBAND, TOTALCLAIMS FROM dbo.vAgeBandAllClaims(@startdate, @enddate, DEFAULT, @businessnatureid) AS vAgeBandAllClaims_1" OnSelecting="SqlDataSource10_Selecting">
                     <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
-                        <asp:ControlParameter ControlID="dlServiceType" Name="servicetypeid" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="dlBusinessNature" Name="businessnatureid" PropertyName="SelectedValue" Type="String" />
                             </SelectParameters>
                 </asp:SqlDataSource>
                     </div>
@@ -796,67 +796,15 @@
                                     </PlotArea>
                                 </telerik:RadHtmlChart>
              
-                <asp:SqlDataSource ID="SqlDataSource11" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AGEBAND, TOTALCLAIMAMOUNT FROM dbo.vAgeBandAllClaimAmount(@startdate, @enddate, @servicetypeid, DEFAULT) AS vAgeBandAllClaimAmount_1" OnSelecting="SqlDataSource11_Selecting">
+                <asp:SqlDataSource ID="SqlDataSource11" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT AGEBAND, TOTALCLAIMAMOUNT FROM dbo.vAgeBandAllClaimAmount(@startdate, @enddate, DEFAULT, @businessnatureid) AS vAgeBandAllClaimAmount_1" OnSelecting="SqlDataSource11_Selecting">
                     <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
-                        <asp:ControlParameter ControlID="dlServiceType" Name="servicetypeid" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="dlBusinessNature" Name="businessnatureid" PropertyName="SelectedValue" Type="String" />
                             </SelectParameters>
                 </asp:SqlDataSource>
                     </div>
                 </div>
-
-              <%--  <div class="row">
-                    <div class="col-md-6">
-                   <telerik:RadHtmlChart runat="server" Width="100%" Height="500px" ID="chtCallsByServiceType" Skin="Silk" DataSourceID="callServiceTypeSource">
-            <PlotArea>
-                <Series>
-                    <telerik:ColumnSeries Name="Total Calls" DataFieldY="TOTALCALLS">
-                        <TooltipsAppearance Color="White"  />
-                    </telerik:ColumnSeries>
-                </Series>
-                <XAxis DataLabelsField="SERVICETYPE" Visible="true">
-                    <LabelsAppearance RotationAngle="60"> </LabelsAppearance>
-                    <TitleAppearance Text="Category" Visible="false"></TitleAppearance>
-                </XAxis>
-                <YAxis >
-                    <LabelsAppearance></LabelsAppearance>
-                    <TitleAppearance Text="Total Calls" Visible="false"> </TitleAppearance>
-                </YAxis>
-            </PlotArea>
-            <Legend >
-                <Appearance Visible="false" > </Appearance>
-            </Legend>
-            <ChartTitle Text="Calls by Service Type">
-            </ChartTitle>
-        </telerik:RadHtmlChart>
-
-         <asp:SqlDataSource ID="callServiceTypeSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="select s.SERVICETYPE, count(c.CallId) as TOTALCALLS from tblCallLog c inner join tblServiceType s on c.ServiceTypeId = s.Id where CAST(calldate as date) = CAST(getdate() as DATE) group by SERVICETYPE"></asp:SqlDataSource>
-                    
-                </div>
-
-                    <div class="col-md-6">
-                                 <telerik:RadHtmlChart ID="chtCallByCallType" runat="server" Width="100%" Height="500px" DataSourceID="callTypeSource">
-                                    <ChartTitle Text="Calls by Call Type">
-                                        <Appearance Visible="True" >
-                                        </Appearance>
-                                    </ChartTitle>
-                                    <Legend>
-                                        <Appearance Visible="True" Position="Bottom">
-                                        </Appearance>
-                                    </Legend>
-                                    <PlotArea>
-                                        <Series>
-                                            <telerik:PieSeries Name="CALLTYPE" StartAngle="90" DataFieldY="TOTALCALLS" NameField="CALLTYPE" >
-                                                <LabelsAppearance DataField="CALLTYPE" Position="OutsideEnd" Visible="true"></LabelsAppearance>
-                                            </telerik:PieSeries>
-                                        </Series>
-                                    </PlotArea>
-                                </telerik:RadHtmlChart>
-             
-                                <asp:SqlDataSource ID="callTypeSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT CALLTYPE, count(CallId) as TOTALCALLS from tblCallLog where CAST(calldate as date) = CAST(getdate() as DATE) group by CALLTYPE"></asp:SqlDataSource>
-                            </div>
-                </div>--%>
 
             </div><!-- /.box-body -->
          

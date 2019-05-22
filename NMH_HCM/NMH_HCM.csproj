@@ -677,6 +677,8 @@
     <Content Include="Setups\Benefits.aspx" />
     <Content Include="Setups\Company_Date_Change.aspx" />
     <Content Include="Setups\Plan_Benefit_Main.aspx" />
+    <Content Include="StatsDashboard\ClaimsAttendance_BusinessNature.aspx" />
+    <Content Include="StatsDashboard\ClaimsAttendance_ItemService.aspx" />
     <Content Include="StatsDashboard\ClaimsAttendance_ServiceType.aspx" />
     <Content Include="UserCommands\AssignVettingDoctor.aspx" />
     <Content Include="UserCommands\BulkSMS.aspx" />
@@ -1040,6 +1042,20 @@
     </Compile>
     <Compile Include="StatsDashboard\ClaimsAttendance.aspx.designer.cs">
       <DependentUpon>ClaimsAttendance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StatsDashboard\ClaimsAttendance_BusinessNature.aspx.cs">
+      <DependentUpon>ClaimsAttendance_BusinessNature.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StatsDashboard\ClaimsAttendance_BusinessNature.aspx.designer.cs">
+      <DependentUpon>ClaimsAttendance_BusinessNature.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StatsDashboard\ClaimsAttendance_ItemService.aspx.cs">
+      <DependentUpon>ClaimsAttendance_ItemService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StatsDashboard\ClaimsAttendance_ItemService.aspx.designer.cs">
+      <DependentUpon>ClaimsAttendance_ItemService.aspx</DependentUpon>
     </Compile>
     <Compile Include="StatsDashboard\ClaimsAttendance_ServiceType.aspx.cs">
       <DependentUpon>ClaimsAttendance_ServiceType.aspx</DependentUpon>
