@@ -209,6 +209,7 @@
                         <li><a href="/StatsDashboard/ClaimsAttendance_ServiceType.aspx"><span>Claims Attendance & Amount<br /> By ServiceType</span></a></li>
                         <li><a href="/StatsDashboard/ClaimsAttendance_BusinessNature.aspx"><span>Claims Attendance & Amount<br /> By Business Nature</span></a></li>
                         <li><a href="/StatsDashboard/ClaimsAttendance_ItemService.aspx"><span>Claims Attendance & Amount<br /> By Item Service</span></a></li>
+                        <li><a href="/StatsDashboard/ClaimsAttendance_ServiceGroup.aspx"><span>Claims Amount<br />By Services</span></a></li>
                     </ul>
             </li>
 

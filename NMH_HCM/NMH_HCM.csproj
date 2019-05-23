@@ -679,6 +679,7 @@
     <Content Include="Setups\Plan_Benefit_Main.aspx" />
     <Content Include="StatsDashboard\ClaimsAttendance_BusinessNature.aspx" />
     <Content Include="StatsDashboard\ClaimsAttendance_ItemService.aspx" />
+    <Content Include="StatsDashboard\ClaimsAttendance_ServiceGroup.aspx" />
     <Content Include="StatsDashboard\ClaimsAttendance_ServiceType.aspx" />
     <Content Include="UserCommands\AssignVettingDoctor.aspx" />
     <Content Include="UserCommands\BulkSMS.aspx" />
@@ -1056,6 +1057,13 @@
     </Compile>
     <Compile Include="StatsDashboard\ClaimsAttendance_ItemService.aspx.designer.cs">
       <DependentUpon>ClaimsAttendance_ItemService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StatsDashboard\ClaimsAttendance_ServiceGroup.aspx.cs">
+      <DependentUpon>ClaimsAttendance_ServiceGroup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StatsDashboard\ClaimsAttendance_ServiceGroup.aspx.designer.cs">
+      <DependentUpon>ClaimsAttendance_ServiceGroup.aspx</DependentUpon>
     </Compile>
     <Compile Include="StatsDashboard\ClaimsAttendance_ServiceType.aspx.cs">
       <DependentUpon>ClaimsAttendance_ServiceType.aspx</DependentUpon>

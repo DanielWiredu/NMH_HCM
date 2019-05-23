@@ -50,6 +50,10 @@ namespace NMH_HCM.StatsDashboard
                     command.Parameters.Add("@ClaimsAmountPrincipal", SqlDbType.Float).Direction = ParameterDirection.Output;
                     command.Parameters.Add("@ClaimsDependent", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.Parameters.Add("@ClaimsAmountDependent", SqlDbType.Float).Direction = ParameterDirection.Output;
+                    command.Parameters.Add("@ItemsMale", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    command.Parameters.Add("@ItemsFemale", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    command.Parameters.Add("@ItemsPrincipal", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    command.Parameters.Add("@ItemsDependent", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.Parameters.Add("@return_value", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
                     try
                     {
@@ -73,6 +77,10 @@ namespace NMH_HCM.StatsDashboard
                         ClaimsAmountPrincipal.InnerText = Convert.ToDouble(command.Parameters["@ClaimsAmountPrincipal"].Value).ToString("N02");
                         ClaimsDependent.InnerText = Convert.ToInt32(command.Parameters["@ClaimsDependent"].Value).ToString("N0");
                         ClaimsAmountDependent.InnerText = Convert.ToDouble(command.Parameters["@ClaimsAmountDependent"].Value).ToString("N02");
+                        ItemsMale.InnerText = Convert.ToInt32(command.Parameters["@ItemsMale"].Value).ToString("N0");
+                        ItemsFemale.InnerText = Convert.ToInt32(command.Parameters["@ItemsFemale"].Value).ToString("N0");
+                        ItemsPrincipal.InnerText = Convert.ToInt32(command.Parameters["@ItemsPrincipal"].Value).ToString("N0");
+                        ItemsDependent.InnerText = Convert.ToInt32(command.Parameters["@ItemsDependent"].Value).ToString("N0");
                     }
                     catch (Exception ex)
                     {

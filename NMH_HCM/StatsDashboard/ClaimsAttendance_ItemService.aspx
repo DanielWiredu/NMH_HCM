@@ -28,7 +28,7 @@
                                 </div>
                                      <div class="col-md-3">
                                          <label>Service</label>
-                                         <telerik:RadDropDownList ID="dlService" runat="server" Width="100%" DataSourceID="serviceSource" DataTextField="ServiceName" DataValueField="ServiceID" DefaultMessage="Select Service"></telerik:RadDropDownList>
+                                         <telerik:RadDropDownList ID="dlService" runat="server" Width="100%" DataSourceID="serviceSource" DataTextField="ServiceName" DataValueField="ServiceID" DefaultMessage="Select Service" DropDownHeight="300px"></telerik:RadDropDownList>
                                          <asp:SqlDataSource ID="serviceSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [ServiceID], [ServiceName] FROM [Services]"></asp:SqlDataSource>
                                          <asp:RequiredFieldValidator runat="server" ErrorMessage="Select Service" ControlToValidate="dlService" Display="Dynamic" ForeColor="Red" SetFocusOnError="true"></asp:RequiredFieldValidator>
                                     </div>
@@ -255,6 +255,59 @@
         </div>
         <!-- /.col -->
       </div>
+
+
+                <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-olive"><i class="fa fa-comment-o"></i></span>
+            <div class="info-box-content">
+              <span>No of Items (Male)</span>
+              <span class="info-box-number" style="font-size:x-large; font-weight:bold" runat="server" id="ItemsMale">410</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-purple"><i class="fa fa-download"></i></span>
+            <div class="info-box-content">
+              <span>No of Items (Female)</span>
+              <span style="font-size:x-large; font-weight:bold" runat="server" id="ItemsFemale">410</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-teal-gradient"><i class="fa fa-gears"></i></span>
+            <div class="info-box-content">
+              <span>No of Items (Principal)</span>
+              <span style="font-size:x-large; font-weight:bold" runat="server" id="ItemsPrincipal">13,648</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-navy"><i class="fa fa-pencil"></i></span>
+            <div class="info-box-content">
+              <span>No of Items (Dependent)</span>
+              <span style="font-size:x-large; font-weight:bold" runat="server" id="ItemsDependent">93,139</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      </div>
+
 
                 <div class="row">
                     <div class="col-md-6">
