@@ -220,7 +220,7 @@
                     <LabelsAppearance RotationAngle="25">
                         <TextStyle />
                     </LabelsAppearance>
-                    <TitleAppearance Text="Benefit Option">
+                    <TitleAppearance Text="Benefit Option" Visible="false">
                         <TextStyle Bold="true" />
                     </TitleAppearance>
                 </XAxis>
@@ -264,7 +264,7 @@
                     <LabelsAppearance RotationAngle="25">
                         <TextStyle />
                     </LabelsAppearance>
-                    <TitleAppearance Text="Benefit Option">
+                    <TitleAppearance Text="Benefit Option" Visible="false">
                         <TextStyle Bold="true" />
                     </TitleAppearance>
                 </XAxis>
@@ -298,20 +298,28 @@
                                  <div class="row">
                     <div class="col-md-6">
                         <telerik:RadHtmlChart ID="RadHtmlChart7" runat="server" Width="100%" Height="500px" DataSourceID="SqlDataSource10">
-                                    <ChartTitle Text="No of Claims">
+                                    <ChartTitle Text="No of Claims - Service Type">
                                         <Appearance Visible="True"  >
                                             <TextStyle Bold="true" />
                                         </Appearance>
                                     </ChartTitle>
                                     <Legend>
-                                        <Appearance Visible="True" Position="Right">
+                                        <Appearance Visible="True" Position="Bottom">
                                         </Appearance>
                                     </Legend>
                                     <PlotArea>
                                         <Series>
                                             <telerik:DonutSeries Name="SERVICETYPE" StartAngle="90" DataFieldY="TOTALCLAIMS" NameField="SERVICETYPE" >
-                                                <LabelsAppearance DataField="SERVICETYPE" Position="OutsideEnd" Visible="true"></LabelsAppearance>
-                                                <TooltipsAppearance DataFormatString="{0:N0}"></TooltipsAppearance>
+                                                <LabelsAppearance DataField="SERVICETYPE" Position="OutsideEnd" Visible="true">
+                                                    <ClientTemplate>
+                                                       #= kendo.format(\'{0:N0}\', dataItem.TOTALCLAIMS)# - (#= kendo.format(\'{0:P02}\', percentage)#)
+                                                    </ClientTemplate>
+                                                </LabelsAppearance>
+                                                <TooltipsAppearance DataFormatString="{0:N0}">
+                                                    <ClientTemplate>
+                                                         #= dataItem.SERVICETYPE# - #= kendo.format(\'{0:N0}\', dataItem.TOTALCLAIMS)#
+                                                    </ClientTemplate>
+                                                </TooltipsAppearance>
                                             </telerik:DonutSeries>
                                         </Series>
                                     </PlotArea>
@@ -326,20 +334,28 @@
                     </div>
                     <div class="col-md-6">
                         <telerik:RadHtmlChart ID="chtAgeBandAllClaimAmt" runat="server" Width="100%" Height="500px" DataSourceID="SqlDataSource11">
-                                    <ChartTitle Text="Claim Amount">
+                                    <ChartTitle Text="Claim Amount - Service Type">
                                         <Appearance Visible="True" >
                                             <TextStyle Bold="true" />
                                         </Appearance>
                                     </ChartTitle>
                                     <Legend>
-                                        <Appearance Visible="True" Position="Right">
+                                        <Appearance Visible="True" Position="Bottom">
                                         </Appearance>
                                     </Legend>
                                     <PlotArea>
                                         <Series>
                                             <telerik:PieSeries Name="SERVICETYPE" StartAngle="90" DataFieldY="TOTALCLAIMAMOUNT" NameField="SERVICETYPE" >
-                                                <LabelsAppearance DataField="SERVICETYPE" Position="OutsideEnd" Visible="true"></LabelsAppearance>
-                                                <TooltipsAppearance DataFormatString="{0:N02}"></TooltipsAppearance>
+                                                <LabelsAppearance DataField="SERVICETYPE" Position="OutsideEnd" Visible="true">
+                                                    <ClientTemplate>
+                                                       #= kendo.format(\'{0:N02}\', dataItem.TOTALCLAIMAMOUNT)# - (#= kendo.format(\'{0:P02}\', percentage)#)
+                                                    </ClientTemplate>
+                                                </LabelsAppearance>
+                                                <TooltipsAppearance DataFormatString="{0:N02}">
+                                                    <ClientTemplate>
+                                                         #= dataItem.SERVICETYPE# - #= kendo.format(\'{0:N02}\', dataItem.TOTALCLAIMAMOUNT)#
+                                                    </ClientTemplate>
+                                                </TooltipsAppearance>
                                             </telerik:PieSeries>
                                         </Series>
                                     </PlotArea>
@@ -362,17 +378,21 @@
             <PlotArea>
                 <Series>
                     <telerik:ColumnSeries DataFieldY="TOTALCLAIMS" >
-                        <LabelsAppearance Visible="true" DataFormatString="{0:N0}">
+                        <LabelsAppearance Visible="true" DataFormatString="{0:N0}" RotationAngle="45">
                             <TextStyle FontSize="13" Bold="true" />
                         </LabelsAppearance>
-                        <TooltipsAppearance Color="White" DataFormatString="{0:N0}" />
+                        <TooltipsAppearance Color="White" DataFormatString="{0:N0}">
+                            <ClientTemplate>
+                               #= dataItem.STATUS# - #= kendo.format(\'{0:N0}\', dataItem.TOTALCLAIMS)#
+                             </ClientTemplate>
+                        </TooltipsAppearance>
                     </telerik:ColumnSeries>                    
                 </Series>
                 <XAxis DataLabelsField="STATUS">
-                    <LabelsAppearance RotationAngle="25">
+                    <LabelsAppearance RotationAngle="45">
                         <TextStyle />
                     </LabelsAppearance>
-                    <TitleAppearance Text="Status">
+                    <TitleAppearance Text="Status" Visible="false">
                         <TextStyle Bold="true" />
                     </TitleAppearance>
                 </XAxis>
@@ -387,7 +407,7 @@
                     <TextStyle  Bold="true" />
                 </Appearance>
             </Legend>
-            <ChartTitle Text="No of Claims - STATUS">
+            <ChartTitle Text="No of Claims - Batch Status">
                 <Appearance>
                     <TextStyle Bold="true" />
                 </Appearance>
@@ -406,17 +426,21 @@
             <PlotArea>
                 <Series>
                     <telerik:ColumnSeries DataFieldY="CLAIMAMOUNT"  >
-                        <LabelsAppearance Visible="true" DataFormatString="{0:N02}">
+                        <LabelsAppearance Visible="true" DataFormatString="{0:N02}" RotationAngle="45">
                             <TextStyle FontSize="12" Bold="true" />
                         </LabelsAppearance>
-                        <TooltipsAppearance Color="White" DataFormatString="{0:N02}" />
+                        <TooltipsAppearance Color="White" DataFormatString="{0:N02}">
+                            <ClientTemplate>
+                               #= dataItem.STATUS# - #= kendo.format(\'{0:N02}\', dataItem.CLAIMAMOUNT)#
+                             </ClientTemplate>
+                        </TooltipsAppearance>
                     </telerik:ColumnSeries> 
                 </Series>
                 <XAxis DataLabelsField="STATUS">
-                    <LabelsAppearance RotationAngle="25">
+                    <LabelsAppearance RotationAngle="45">
                         <TextStyle />
                     </LabelsAppearance>
-                    <TitleAppearance Text="Status">
+                    <TitleAppearance Text="Status" Visible="false">
                         <TextStyle Bold="true" />
                     </TitleAppearance>
                 </XAxis>
@@ -431,7 +455,7 @@
                     <TextStyle  Bold="true" />
                 </Appearance>
             </Legend>
-            <ChartTitle Text="Claim Amount - STATUS">
+            <ChartTitle Text="Claim Amount - Batch Status">
                 <Appearance>
                     <TextStyle Bold="true" />
                 </Appearance>

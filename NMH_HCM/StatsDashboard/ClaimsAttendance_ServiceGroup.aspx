@@ -55,9 +55,20 @@
                                     </Legend>
                                     <PlotArea>
                                         <Series>
-                                            <telerik:PieSeries Name="SERVICENAME" StartAngle="90" DataFieldY="CLAIMAMOUNT" NameField="SERVICENAME" >
-                                                <LabelsAppearance DataField="SERVICENAME" Position="OutsideEnd" Visible="true"></LabelsAppearance>
-                                                <TooltipsAppearance DataFormatString="{0:N02}"></TooltipsAppearance>
+                                            <telerik:PieSeries Name="SERVICENAME" StartAngle="90" DataFieldY="CLAIMAMOUNT" NameField="SERVICENAME">
+                                                <LabelsAppearance DataField="SERVICENAME" Position="OutsideEnd" Visible="true" >
+                                                    <ClientTemplate>
+                                                       #= kendo.format(\'{0:N02}\', dataItem.CLAIMAMOUNT)# - (#= kendo.format(\'{0:P02}\', percentage)#)
+                                                        <%-- #= kendo.format(\'{0:P02}\', percentage)# - (#= dataItem.CLAIMAMOUNT# )--%>
+                                                       <%-- #= dataItem.percentageValue # % - (#= dataItem.CLAIMAMOUNT# units)--%>
+                                                        <%--#= percentage * 100 # %--%>
+                                                    </ClientTemplate>
+                                                </LabelsAppearance>
+                                                <TooltipsAppearance DataFormatString="{0:N02}">
+                                                    <ClientTemplate>
+                                                         #= dataItem.SERVICENAME# - #= kendo.format(\'{0:N02}\', dataItem.CLAIMAMOUNT)#
+                                                    </ClientTemplate>
+                                                </TooltipsAppearance>
                                             </telerik:PieSeries>
                                         </Series>
                                     </PlotArea>
@@ -81,14 +92,22 @@
                                         </Appearance>
                                     </ChartTitle>
                                     <Legend>
-                                        <Appearance Visible="false" Position="Right">
+                                        <Appearance Visible="true" Position="Bottom">
                                         </Appearance>
                                     </Legend>
                                     <PlotArea>
                                         <Series>
                                             <telerik:DonutSeries Name="SERVICENAME" StartAngle="90" DataFieldY="CLAIMAMOUNT" NameField="SERVICENAME" >
-                                                <LabelsAppearance DataField="SERVICENAME" Position="OutsideEnd" Visible="true"></LabelsAppearance>
-                                                <TooltipsAppearance DataFormatString="{0:N02}"></TooltipsAppearance>
+                                                <LabelsAppearance DataField="SERVICENAME" Position="OutsideEnd" Visible="true">
+                                                    <ClientTemplate>
+                                                        #= kendo.format(\'{0:N02}\', dataItem.CLAIMAMOUNT)# - (#= kendo.format(\'{0:P02}\', percentage)#)
+                                                    </ClientTemplate>
+                                                </LabelsAppearance>
+                                                <TooltipsAppearance DataFormatString="{0:N02}">
+                                                    <ClientTemplate>
+                                                         #= dataItem.SERVICENAME# - #= kendo.format(\'{0:N02}\', dataItem.CLAIMAMOUNT)#
+                                                    </ClientTemplate>
+                                                </TooltipsAppearance>
                                             </telerik:DonutSeries>
                                         </Series>
                                     </PlotArea>
@@ -109,20 +128,104 @@
                                         </Appearance>
                                     </ChartTitle>
                                     <Legend>
-                                        <Appearance Visible="false" Position="Right">
+                                        <Appearance Visible="true" Position="Bottom">
                                         </Appearance>
                                     </Legend>
                                     <PlotArea>
                                         <Series>
                                             <telerik:PieSeries Name="SERVICENAME" StartAngle="90" DataFieldY="CLAIMAMOUNT" NameField="SERVICENAME" >
-                                                <LabelsAppearance DataField="SERVICENAME" Position="OutsideEnd" Visible="true"></LabelsAppearance>
-                                                <TooltipsAppearance DataFormatString="{0:N02}"></TooltipsAppearance>
+                                                <LabelsAppearance DataField="SERVICENAME" Position="OutsideEnd" Visible="true">
+                                                    <ClientTemplate>
+                                                        #= kendo.format(\'{0:N02}\', dataItem.CLAIMAMOUNT)# - (#= kendo.format(\'{0:P02}\', percentage)#)
+                                                    </ClientTemplate>
+                                                </LabelsAppearance>
+                                                <TooltipsAppearance DataFormatString="{0:N02}">
+                                                    <ClientTemplate>
+                                                         #= dataItem.SERVICENAME# - #= kendo.format(\'{0:N02}\', dataItem.CLAIMAMOUNT)#
+                                                    </ClientTemplate>
+                                                </TooltipsAppearance>
                                             </telerik:PieSeries>
                                         </Series>
                                     </PlotArea>
                                 </telerik:RadHtmlChart>
              
                 <asp:SqlDataSource ID="serviceFemaleSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT SERVICENAME, sum(SysAmountClaimed) as CLAIMAMOUNT from vwStatsDashboard_ClaimItems WHERE (DateofAttendance between @startdate AND @enddate) AND Gender='FEMALE' GROUP BY SERVICENAME" OnSelecting="serviceFemaleSource_Selecting">
+                    <SelectParameters>
+                                <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
+                                <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
+                            </SelectParameters>
+                </asp:SqlDataSource>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <telerik:RadHtmlChart ID="chtServicePrincipal" runat="server" Width="100%" Height="500px" DataSourceID="servicePrincipalSource">
+                                    <ChartTitle Text="Claim Amount - Principal">
+                                        <Appearance Visible="True"  >
+                                            <TextStyle Bold="true" />
+                                        </Appearance>
+                                    </ChartTitle>
+                                    <Legend>
+                                        <Appearance Visible="true" Position="Bottom">
+                                        </Appearance>
+                                    </Legend>
+                                    <PlotArea>
+                                        <Series>
+                                            <telerik:DonutSeries Name="SERVICENAME" StartAngle="90" DataFieldY="CLAIMAMOUNT" NameField="SERVICENAME" >
+                                                <LabelsAppearance DataField="SERVICENAME" Position="OutsideEnd" Visible="true">
+                                                    <ClientTemplate>
+                                                        #= kendo.format(\'{0:N02}\', dataItem.CLAIMAMOUNT)# - (#= kendo.format(\'{0:P02}\', percentage)#)
+                                                    </ClientTemplate>
+                                                </LabelsAppearance>
+                                                <TooltipsAppearance DataFormatString="{0:N02}">
+                                                    <ClientTemplate>
+                                                         #= dataItem.SERVICENAME# - #= kendo.format(\'{0:N02}\', dataItem.CLAIMAMOUNT)#
+                                                    </ClientTemplate>
+                                                </TooltipsAppearance>
+                                            </telerik:DonutSeries>
+                                        </Series>
+                                    </PlotArea>
+                                </telerik:RadHtmlChart>
+             
+                <asp:SqlDataSource ID="servicePrincipalSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT SERVICENAME, sum(SysAmountClaimed) as CLAIMAMOUNT from vwStatsDashboard_ClaimItems WHERE (DateofAttendance between @startdate AND @enddate) AND MemberTypeID = 1 GROUP BY SERVICENAME" OnSelecting="servicePrincipalSource_Selecting">
+                    <SelectParameters>
+                                <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
+                                <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
+                            </SelectParameters>
+                </asp:SqlDataSource>
+                    </div>
+                    <div class="col-md-6">
+                        <telerik:RadHtmlChart ID="chtServiceDependent" runat="server" Width="100%" Height="500px" DataSourceID="serviceDependentSource">
+                                    <ChartTitle Text="Claim Amount - Dependent">
+                                        <Appearance Visible="True" >
+                                            <TextStyle Bold="true" />
+                                        </Appearance>
+                                    </ChartTitle>
+                                    <Legend>
+                                        <Appearance Visible="true" Position="Bottom">
+                                        </Appearance>
+                                    </Legend>
+                                    <PlotArea>
+                                        <Series>
+                                            <telerik:PieSeries Name="SERVICENAME" StartAngle="90" DataFieldY="CLAIMAMOUNT" NameField="SERVICENAME" >
+                                                <LabelsAppearance DataField="SERVICENAME" Position="OutsideEnd" Visible="true">
+                                                    <ClientTemplate>
+                                                        #= kendo.format(\'{0:N02}\', dataItem.CLAIMAMOUNT)# - (#= kendo.format(\'{0:P02}\', percentage)#)
+                                                    </ClientTemplate>
+                                                </LabelsAppearance>
+                                                <TooltipsAppearance DataFormatString="{0:N02}">
+                                                    <ClientTemplate>
+                                                         #= dataItem.SERVICENAME# - #= kendo.format(\'{0:N02}\', dataItem.CLAIMAMOUNT)#
+                                                    </ClientTemplate>
+                                                </TooltipsAppearance>
+                                            </telerik:PieSeries>
+                                        </Series>
+                                    </PlotArea>
+                                </telerik:RadHtmlChart>
+             
+                <asp:SqlDataSource ID="serviceDependentSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT SERVICENAME, sum(SysAmountClaimed) as CLAIMAMOUNT from vwStatsDashboard_ClaimItems WHERE (DateofAttendance between @startdate AND @enddate) AND MemberTypeID = 2 GROUP BY SERVICENAME" OnSelecting="serviceDependentSource_Selecting">
                     <SelectParameters>
                                 <asp:ControlParameter ControlID="dpStartDate" Name="startdate" PropertyName="SelectedDate" />
                                 <asp:ControlParameter ControlID="dpEndDate" Name="enddate" PropertyName="SelectedDate" />
@@ -141,14 +244,22 @@
                                         </Appearance>
                                     </ChartTitle>
                                     <Legend>
-                                        <Appearance Visible="false" Position="Right">
+                                        <Appearance Visible="true" Position="Bottom">
                                         </Appearance>
                                     </Legend>
                                     <PlotArea>
                                         <Series>
                                             <telerik:DonutSeries Name="SERVICENAME" StartAngle="90" DataFieldY="CLAIMAMOUNT" NameField="SERVICENAME" >
-                                                <LabelsAppearance DataField="SERVICENAME" Position="OutsideEnd" Visible="true"></LabelsAppearance>
-                                                <TooltipsAppearance DataFormatString="{0:N02}"></TooltipsAppearance>
+                                                <LabelsAppearance DataField="SERVICENAME" Position="OutsideEnd" Visible="true">
+                                                    <ClientTemplate>
+                                                        #= kendo.format(\'{0:N02}\', dataItem.CLAIMAMOUNT)# - (#= kendo.format(\'{0:P02}\', percentage)#)
+                                                    </ClientTemplate>
+                                                </LabelsAppearance>
+                                                <TooltipsAppearance DataFormatString="{0:N02}">
+                                                    <ClientTemplate>
+                                                         #= dataItem.SERVICENAME# - #= kendo.format(\'{0:N02}\', dataItem.CLAIMAMOUNT)#
+                                                    </ClientTemplate>
+                                                </TooltipsAppearance>
                                             </telerik:DonutSeries>
                                         </Series>
                                     </PlotArea>
@@ -169,14 +280,22 @@
                                         </Appearance>
                                     </ChartTitle>
                                     <Legend>
-                                        <Appearance Visible="false" Position="Right">
+                                        <Appearance Visible="true" Position="Bottom">
                                         </Appearance>
                                     </Legend>
                                     <PlotArea>
                                         <Series>
                                             <telerik:PieSeries Name="SERVICENAME" StartAngle="90" DataFieldY="CLAIMAMOUNT" NameField="SERVICENAME" >
-                                                <LabelsAppearance DataField="SERVICENAME" Position="OutsideEnd" Visible="true"></LabelsAppearance>
-                                                <TooltipsAppearance DataFormatString="{0:N02}"></TooltipsAppearance>
+                                                <LabelsAppearance DataField="SERVICENAME" Position="OutsideEnd" Visible="true">
+                                                    <ClientTemplate>
+                                                        #= kendo.format(\'{0:N02}\', dataItem.CLAIMAMOUNT)# - (#= kendo.format(\'{0:P02}\', percentage)#)
+                                                    </ClientTemplate>
+                                                </LabelsAppearance>
+                                                <TooltipsAppearance DataFormatString="{0:N02}">
+                                                    <ClientTemplate>
+                                                         #= dataItem.SERVICENAME# - #= kendo.format(\'{0:N02}\', dataItem.CLAIMAMOUNT)#
+                                                    </ClientTemplate>
+                                                </TooltipsAppearance>
                                             </telerik:PieSeries>
                                         </Series>
                                     </PlotArea>
@@ -201,14 +320,22 @@
                                         </Appearance>
                                     </ChartTitle>
                                     <Legend>
-                                        <Appearance Visible="false" Position="Right">
+                                        <Appearance Visible="true" Position="Bottom">
                                         </Appearance>
                                     </Legend>
                                     <PlotArea>
                                         <Series>
                                             <telerik:DonutSeries Name="SERVICENAME" StartAngle="90" DataFieldY="CLAIMAMOUNT" NameField="SERVICENAME" >
-                                                <LabelsAppearance DataField="SERVICENAME" Position="OutsideEnd" Visible="true"></LabelsAppearance>
-                                                <TooltipsAppearance DataFormatString="{0:N02}"></TooltipsAppearance>
+                                                <LabelsAppearance DataField="SERVICENAME" Position="OutsideEnd" Visible="true">
+                                                    <ClientTemplate>
+                                                        #= kendo.format(\'{0:N02}\', dataItem.CLAIMAMOUNT)# - (#= kendo.format(\'{0:P02}\', percentage)#)
+                                                    </ClientTemplate>
+                                                </LabelsAppearance>
+                                                <TooltipsAppearance DataFormatString="{0:N02}">
+                                                    <ClientTemplate>
+                                                         #= dataItem.SERVICENAME# - #= kendo.format(\'{0:N02}\', dataItem.CLAIMAMOUNT)#
+                                                    </ClientTemplate>
+                                                </TooltipsAppearance>
                                             </telerik:DonutSeries>
                                         </Series>
                                     </PlotArea>
@@ -229,14 +356,22 @@
                                         </Appearance>
                                     </ChartTitle>
                                     <Legend>
-                                        <Appearance Visible="false" Position="Right">
+                                        <Appearance Visible="true" Position="Bottom">
                                         </Appearance>
                                     </Legend>
                                     <PlotArea>
                                         <Series>
                                             <telerik:PieSeries Name="SERVICENAME" StartAngle="90" DataFieldY="CLAIMAMOUNT" NameField="SERVICENAME" >
-                                                <LabelsAppearance DataField="SERVICENAME" Position="OutsideEnd" Visible="true"></LabelsAppearance>
-                                                <TooltipsAppearance DataFormatString="{0:N02}"></TooltipsAppearance>
+                                                <LabelsAppearance DataField="SERVICENAME" Position="OutsideEnd" Visible="true">
+                                                    <ClientTemplate>
+                                                        #= kendo.format(\'{0:N02}\', dataItem.CLAIMAMOUNT)# - (#= kendo.format(\'{0:P02}\', percentage)#)
+                                                    </ClientTemplate>
+                                                </LabelsAppearance>
+                                                <TooltipsAppearance DataFormatString="{0:N02}">
+                                                    <ClientTemplate>
+                                                         #= dataItem.SERVICENAME# - #= kendo.format(\'{0:N02}\', dataItem.CLAIMAMOUNT)#
+                                                    </ClientTemplate>
+                                                </TooltipsAppearance>
                                             </telerik:PieSeries>
                                         </Series>
                                     </PlotArea>

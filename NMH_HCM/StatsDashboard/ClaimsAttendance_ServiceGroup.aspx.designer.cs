@@ -94,6 +94,42 @@ namespace NMH_HCM.StatsDashboard {
         protected global::System.Web.UI.WebControls.SqlDataSource serviceFemaleSource;
         
         /// <summary>
+        /// chtServicePrincipal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadHtmlChart chtServicePrincipal;
+        
+        /// <summary>
+        /// servicePrincipalSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource servicePrincipalSource;
+        
+        /// <summary>
+        /// chtServiceDependent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadHtmlChart chtServiceDependent;
+        
+        /// <summary>
+        /// serviceDependentSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource serviceDependentSource;
+        
+        /// <summary>
         /// chtServiceEssential control.
         /// </summary>
         /// <remarks>

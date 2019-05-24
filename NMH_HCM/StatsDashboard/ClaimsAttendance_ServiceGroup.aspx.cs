@@ -52,5 +52,15 @@ namespace NMH_HCM.StatsDashboard
         {
             e.Command.CommandTimeout = 0;
         }
+
+        protected void servicePrincipalSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+        {
+            e.Command.CommandTimeout = 0;
+        }
+
+        protected void serviceDependentSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+        {
+            e.Command.CommandTimeout = 0;
+        }
     }
 }
