@@ -70,13 +70,9 @@
                                     </MasterTableView>
                                 </telerik:RadGrid>
                                 <asp:SqlDataSource ID="notEqualSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-                                    SelectCommand="SELECT  ClaimsHeader.ClaimsBatchNo, ClaimsDetails1.ClaimsNo, Tariff.TariffName, ClaimsDetails1.Claimed, ClaimsDetails1.ApprovedAmount FROM  Tariff INNER JOIN
-                         ClaimsDetails1 ON Tariff.TariffID = ClaimsDetails1.ProductID INNER JOIN
-                         ClaimsHeader ON ClaimsDetails1.ClaimsNo = ClaimsHeader.ClaimsNo LEFT OUTER JOIN
-                         Vw_AdviceSlip_Outcome ON ClaimsDetails1.ID = Vw_AdviceSlip_Outcome.ClaimsDetailsID
-WHERE        (ClaimsHeader.ClaimsBatchNo = @BatchNo) AND (ClaimsDetails1.Claimed <> ClaimsDetails1.ApprovedAmount) AND (Vw_AdviceSlip_Outcome.ClaimsDetailsID IS NULL)">
+                                    SelectCommand="spGetUnequalExcludeAdvice" SelectCommandType="StoredProcedure">
                                     <SelectParameters>
-                                        <asp:ControlParameter ControlID="txtBatchNo" DefaultValue="-1" Name="BatchNo" PropertyName="Text" Type="String" />
+                                        <asp:ControlParameter ControlID="txtBatchNo" DefaultValue="1" Name="BatchNo" PropertyName="Text" Type="Int32" />
                                     </SelectParameters>
                                 </asp:SqlDataSource>
                             </div>
