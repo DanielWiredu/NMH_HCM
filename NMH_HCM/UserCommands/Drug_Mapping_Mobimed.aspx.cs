@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace NMH_HCM.UserCommands
 {
-    public partial class Drug_Mapping : System.Web.UI.Page
+    public partial class Drug_Mapping_Mobimed : System.Web.UI.Page
     {
         static string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         int rows = 0;
@@ -24,17 +24,17 @@ namespace NMH_HCM.UserCommands
         {
             if (String.IsNullOrEmpty(dlTariff.SelectedValue))
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "", "toastr.error('No Tariff selected. Please try again', 'Error');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "", "toastr.error('No NMH Tariff selected. Please try again', 'Error');", true);
                 return;
             }
             if (String.IsNullOrEmpty(dlDrug.SelectedValue))
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "", "toastr.error('No RX Drug selected. Please try again', 'Error');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "", "toastr.error('No Mobimed Drug selected. Please try again', 'Error');", true);
                 return;
             }
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlCommand command = new SqlCommand("spAdd_NMH_DrugMap", connection))
+                using (SqlCommand command = new SqlCommand("spAdd_NMH_DrugMap_Mobimed", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.Add("@TariffID", SqlDbType.Int).Value = dlTariff.SelectedValue;
@@ -81,7 +81,7 @@ namespace NMH_HCM.UserCommands
 
         protected void dlTariff_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
         {
-            String sql = "SELECT top(100) TariffID, TariffName FROM [Tariff] WHERE ServiceID = 5 AND TariffName LIKE '%" + e.Text.ToUpper() + "%'";
+            String sql = "SELECT top(100) Tariff.TariffID, Tariff.TariffName FROM Tariff LEFT OUTER JOIN NMH_DrugMap ON Tariff.TariffID = NMH_DrugMap.NMH_TariffID WHERE (Tariff.ServiceID = 5) AND (NMH_DrugMap.NMH_TariffID IS NULL) AND Tariff.TariffName LIKE '%" + e.Text.ToUpper() + "%'";
             tariffSource.SelectCommand = sql;
             dlTariff.DataBind();
         }
@@ -100,7 +100,7 @@ namespace NMH_HCM.UserCommands
 
         protected void dlDrug_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
         {
-            String sql = "SELECT top (100) DrugID, DrugName, DrugPrice FROM [DrugPriceList] WHERE Mapped = 0 AND DrugName LIKE '%" + e.Text.ToUpper() + "%'";
+            String sql = "SELECT top (100) DrugID, DrugName, DrugPrice FROM [DrugPriceList_Mobimed] WHERE Mapped = 0 AND DrugName LIKE '%" + e.Text.ToUpper() + "%'";
             drugSource.SelectCommand = sql;
             dlDrug.DataBind();
         }
@@ -112,7 +112,7 @@ namespace NMH_HCM.UserCommands
             string drugId = item["DrugId"].Text;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlCommand command = new SqlCommand("spDelete_NMH_DrugMap", connection))
+                using (SqlCommand command = new SqlCommand("spDelete_NMH_DrugMap_Mobimed", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.Add("@MapID", SqlDbType.Int).Value = deleteId;

@@ -217,7 +217,14 @@
 
               <li><a href="/UserCommands/Online_Member_Upload.aspx"><span>Online Member Upload</span></a></li>
 
-              <li><a href="/UserCommands/Drug_Mapping.aspx"><span>Tariff Mapping</span></a></li>
+              <%--<li><a href="/UserCommands/Drug_Mapping.aspx"><span>Tariff Mapping</span></a></li>--%>
+
+              <li  class="treeview"><a href="#"> <span>Tariff Mapping</span> <i class="fa fa-angle-left pull-right"></i></a>             
+                    <ul class="treeview-menu">
+                        <li><a href="/UserCommands/Drug_Mapping.aspx"><span>PSP</span></a></li>
+                        <li><a href="/UserCommands/Drug_Mapping_Mobimed.aspx"><span>Mobimed</span></a></li>
+                    </ul>
+            </li>
 
               <li  class="treeview"><a href="#"> <span>Membership</span> <i class="fa fa-angle-left pull-right"></i></a>             
                     <ul class="treeview-menu">

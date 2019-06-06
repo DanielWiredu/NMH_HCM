@@ -683,6 +683,7 @@
     <Content Include="StatsDashboard\ClaimsAttendance_ServiceType.aspx" />
     <Content Include="UserCommands\AssignVettingDoctor.aspx" />
     <Content Include="UserCommands\BulkSMS.aspx" />
+    <Content Include="UserCommands\Drug_Mapping_Mobimed.aspx" />
     <Content Include="UserReports\Member_Claim_Utilization.aspx" />
     <Content Include="UserReports\Monthly_Claim_Prescriptions.aspx" />
     <Content Include="UserReports\OnlineMemberRegistration.aspx" />
@@ -1113,6 +1114,13 @@
     </Compile>
     <Compile Include="UserCommands\Drug_Mapping.aspx.designer.cs">
       <DependentUpon>Drug_Mapping.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserCommands\Drug_Mapping_Mobimed.aspx.cs">
+      <DependentUpon>Drug_Mapping_Mobimed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserCommands\Drug_Mapping_Mobimed.aspx.designer.cs">
+      <DependentUpon>Drug_Mapping_Mobimed.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserCommands\Online_Member_Upload.aspx.cs">
       <DependentUpon>Online_Member_Upload.aspx</DependentUpon>

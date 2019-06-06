@@ -1,14 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="Drug_Mapping.aspx.cs" Inherits="NMH_HCM.UserCommands.Drug_Mapping" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="Drug_Mapping_Mobimed.aspx.cs" Inherits="NMH_HCM.UserCommands.Drug_Mapping_Mobimed" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     <link href="/Content/dist/css/telerikCombo.css" rel="stylesheet" />
+    <link href="/Content/dist/css/telerikCombo.css" rel="stylesheet" />
     <link href="/Content/dist/css/updateProgress.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div class="box box-default">
+    <div class="box box-default">
             <div class="box-header with-border">
-              <h3 class="box-title">Drug Mapping </h3>
+              <h3 class="box-title">Drug Mapping - Mobimed </h3>
               <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
@@ -57,7 +57,7 @@
                 items
             </FooterTemplate>
                                         </telerik:RadComboBox>
-                                        <asp:SqlDataSource ID="drugSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT top (100) DrugID, DrugName, DrugPrice FROM [DrugPriceList] WHERE Mapped = 0"></asp:SqlDataSource>
+                                        <asp:SqlDataSource ID="drugSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT top (100) DrugID, DrugName, DrugPrice FROM [DrugPriceList_Mobimed] WHERE Mapped = 0"></asp:SqlDataSource>
                                         <asp:RequiredFieldValidator runat="server" ControlToValidate="dlDrug" Display="Dynamic" ErrorMessage="Required Field" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                                    </div>
                                </div>
@@ -90,7 +90,7 @@
                 items
             </FooterTemplate>
                                         </telerik:RadComboBox>
-                                        <asp:SqlDataSource ID="tariffSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT top (100) TariffID, TariffName FROM [Tariff] WHERE ServiceID = 5"></asp:SqlDataSource>
+                                        <asp:SqlDataSource ID="tariffSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT top(100) Tariff.TariffID, Tariff.TariffName FROM Tariff LEFT OUTER JOIN NMH_DrugMap ON Tariff.TariffID = NMH_DrugMap.NMH_TariffID WHERE (Tariff.ServiceID = 5) AND (NMH_DrugMap.NMH_TariffID IS NULL)"></asp:SqlDataSource>
                                         <asp:RequiredFieldValidator runat="server" ControlToValidate="dlTariff" Display="Dynamic" ErrorMessage="Required Field" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                                  </div>
                                  </div>
@@ -129,10 +129,10 @@
                                  </Columns>
                              </MasterTableView>
                          </telerik:RadGrid>
-                         <asp:SqlDataSource ID="mapSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT     NMH_DrugMap.Id, DrugPriceList.DrugId, DrugPriceList.DrugName, DrugPriceList.DrugPrice, Tariff.TariffName
-FROM         NMH_DrugMap INNER JOIN
-                      DrugPriceList ON NMH_DrugMap.DrugID = DrugPriceList.DrugId INNER JOIN
-                      Tariff ON NMH_DrugMap.NMH_TariffID = Tariff.TariffID"></asp:SqlDataSource>
+                         <asp:SqlDataSource ID="mapSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT     NMH_DrugMap_Mobimed.Id, DrugPriceList_Mobimed.DrugId, DrugPriceList_Mobimed.DrugName, DrugPriceList_Mobimed.DrugPrice, Tariff.TariffName
+FROM         NMH_DrugMap_Mobimed INNER JOIN
+                      DrugPriceList_Mobimed ON NMH_DrugMap_Mobimed.DrugID = DrugPriceList_Mobimed.DrugId INNER JOIN
+                      Tariff ON NMH_DrugMap_Mobimed.NMH_TariffID = Tariff.TariffID"></asp:SqlDataSource>
                      </div>
             </div>
             </ContentTemplate>
