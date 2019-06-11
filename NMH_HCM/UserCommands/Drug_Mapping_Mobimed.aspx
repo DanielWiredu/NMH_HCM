@@ -57,7 +57,7 @@
                 items
             </FooterTemplate>
                                         </telerik:RadComboBox>
-                                        <asp:SqlDataSource ID="drugSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT top (100) DrugID, DrugName, DrugPrice FROM [DrugPriceList_Mobimed] WHERE Mapped = 0"></asp:SqlDataSource>
+                                        <asp:SqlDataSource ID="drugSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT top (200) DrugID, DrugName, DrugPrice FROM [DrugPriceList_Mobimed] WHERE Mapped = 0"></asp:SqlDataSource>
                                         <asp:RequiredFieldValidator runat="server" ControlToValidate="dlDrug" Display="Dynamic" ErrorMessage="Required Field" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                                    </div>
                                </div>
@@ -90,7 +90,7 @@
                 items
             </FooterTemplate>
                                         </telerik:RadComboBox>
-                                        <asp:SqlDataSource ID="tariffSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT top(100) Tariff.TariffID, Tariff.TariffName FROM Tariff LEFT OUTER JOIN NMH_DrugMap ON Tariff.TariffID = NMH_DrugMap.NMH_TariffID WHERE (Tariff.ServiceID = 5) AND (NMH_DrugMap.NMH_TariffID IS NULL)"></asp:SqlDataSource>
+                                        <asp:SqlDataSource ID="tariffSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT top(200) Tariff.TariffID, Tariff.TariffName FROM Tariff LEFT OUTER JOIN NMH_DrugMap ON Tariff.TariffID = NMH_DrugMap.NMH_TariffID WHERE (Tariff.ServiceID = 5) AND (NMH_DrugMap.NMH_TariffID IS NULL)"></asp:SqlDataSource>
                                         <asp:RequiredFieldValidator runat="server" ControlToValidate="dlTariff" Display="Dynamic" ErrorMessage="Required Field" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                                  </div>
                                  </div>

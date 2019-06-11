@@ -81,7 +81,7 @@ namespace NMH_HCM.UserCommands
 
         protected void dlTariff_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
         {
-            String sql = "SELECT top(100) Tariff.TariffID, Tariff.TariffName FROM Tariff LEFT OUTER JOIN NMH_DrugMap ON Tariff.TariffID = NMH_DrugMap.NMH_TariffID WHERE (Tariff.ServiceID = 5) AND (NMH_DrugMap.NMH_TariffID IS NULL) AND Tariff.TariffName LIKE '%" + e.Text.ToUpper() + "%'";
+            String sql = "SELECT top(200) Tariff.TariffID, Tariff.TariffName FROM Tariff LEFT OUTER JOIN NMH_DrugMap ON Tariff.TariffID = NMH_DrugMap.NMH_TariffID WHERE (Tariff.ServiceID = 5) AND (NMH_DrugMap.NMH_TariffID IS NULL) AND Tariff.TariffName LIKE '%" + e.Text.ToUpper() + "%'";
             tariffSource.SelectCommand = sql;
             dlTariff.DataBind();
         }
@@ -100,7 +100,7 @@ namespace NMH_HCM.UserCommands
 
         protected void dlDrug_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
         {
-            String sql = "SELECT top (100) DrugID, DrugName, DrugPrice FROM [DrugPriceList_Mobimed] WHERE Mapped = 0 AND DrugName LIKE '%" + e.Text.ToUpper() + "%'";
+            String sql = "SELECT top (200) DrugID, DrugName, DrugPrice FROM [DrugPriceList_Mobimed] WHERE Mapped = 0 AND DrugName LIKE '%" + e.Text.ToUpper() + "%'";
             drugSource.SelectCommand = sql;
             dlDrug.DataBind();
         }

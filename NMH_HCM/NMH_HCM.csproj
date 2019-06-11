@@ -681,6 +681,9 @@
     <Content Include="StatsDashboard\ClaimsAttendance_ItemService.aspx" />
     <Content Include="StatsDashboard\ClaimsAttendance_ServiceGroup.aspx" />
     <Content Include="StatsDashboard\ClaimsAttendance_ServiceType.aspx" />
+    <Content Include="StatsDashboard\ProviderClaimAmountMonthly.aspx" />
+    <Content Include="StatsDashboard\ProviderClaimMembersMonthly.aspx" />
+    <Content Include="StatsDashboard\ProviderClaimsMonthly.aspx" />
     <Content Include="UserCommands\AssignVettingDoctor.aspx" />
     <Content Include="UserCommands\BulkSMS.aspx" />
     <Content Include="UserCommands\Drug_Mapping_Mobimed.aspx" />
@@ -1072,6 +1075,27 @@
     </Compile>
     <Compile Include="StatsDashboard\ClaimsAttendance_ServiceType.aspx.designer.cs">
       <DependentUpon>ClaimsAttendance_ServiceType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StatsDashboard\ProviderClaimAmountMonthly.aspx.cs">
+      <DependentUpon>ProviderClaimAmountMonthly.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StatsDashboard\ProviderClaimAmountMonthly.aspx.designer.cs">
+      <DependentUpon>ProviderClaimAmountMonthly.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StatsDashboard\ProviderClaimMembersMonthly.aspx.cs">
+      <DependentUpon>ProviderClaimMembersMonthly.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StatsDashboard\ProviderClaimMembersMonthly.aspx.designer.cs">
+      <DependentUpon>ProviderClaimMembersMonthly.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StatsDashboard\ProviderClaimsMonthly.aspx.cs">
+      <DependentUpon>ProviderClaimsMonthly.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StatsDashboard\ProviderClaimsMonthly.aspx.designer.cs">
+      <DependentUpon>ProviderClaimsMonthly.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserCommands\ArchivePolicy_Delete.aspx.cs">
       <DependentUpon>ArchivePolicy_Delete.aspx</DependentUpon>
